@@ -7,8 +7,28 @@ const dates = [
   "2020-02-03 UTC+7", // 1580662800 (epoch time, dalam detik)
 ];
 
+const convertToSecond = (date) => { 
+  let newdate = new Date(date);
+  return String(Math.floor( newdate / 1000 )); 
+}
+
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (datesArray, positionNumber) => {
+  let dateArray = [];
+  for(let i=0; i< datesArray.length; i++){
+    if(positionNumber == null){
+      dateArray.push(convertToSecond(datesArray[i]));
+    }
+    else{
+      if(i == positionNumber){
+        return convertToSecond(datesArray[i]);
+        break;
+      }
+    }
+  }
+
+  return String(dateArray.sort()).replace(/,/g,"-");   
+} ;
 
 // ! JANGAN DIMODIFIKASI
 (() => {
